@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PlayerSetupTableComponent } from '../player-setup-table/player-setup-table.component';
 import { AlertController } from '@ionic/angular';
+import { GameService } from '../services/game-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-setup',
@@ -14,7 +16,11 @@ export class GameSetupComponent {
   playerCount: number = 3;
   players: string[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private alertController: AlertController,
+    private gameService: GameService,
+    private router: Router
+  ) {}
 
   onPlayersChanged(players: string[]) {
     this.players = players;
@@ -38,7 +44,8 @@ export class GameSetupComponent {
   }
 
   private startGame() {
-    console.log('Game started with players:', this.players);
+    this.gameService.setPlayers(this.players);
+    this.router.navigate(['/game']);
   }
 
   private validPlayerNames(): boolean {
