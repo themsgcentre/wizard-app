@@ -1,0 +1,12 @@
+<div class="player-setup-table-container">
+  <table class="player-table">
+    @for (player of players; track $index) {
+      <tr class="table-row">
+        <td class="player-number">Player {{$index + 1}}</td>
+        <td class="name-input">
+          <input type="text" [(ngModel)]="players[$index]" class="name-input-field">
+        </td>
+      </tr>
+    }
+  </table>
+</div>

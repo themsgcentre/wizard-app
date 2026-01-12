@@ -1,0 +1,20 @@
+<div class="game-setup-container">
+  <div class="title">Game Setup</div>
+  <div class="description">Setup the player information for your game:</div>
+  
+  <div class="number-select-container">
+    <div class="label">Number of Players: </div>
+    <select class="player-count-select" [(ngModel)]="playerCount">
+      <option [value]="3">3</option>
+      <option [value]="4">4</option>
+      <option [value]="5">5</option>
+      <option [value]="6">6</option>
+    </select>
+  </div>
+  
+  <div class="player-table-container">
+    <app-player-setup-table [playerCount]="playerCount" (playersChanged)="onPlayersChanged($event)"></app-player-setup-table>
+  </div>
+  
+  <button class="start-game-button" (click)="startGame()">Start Game</button>
+</div>
